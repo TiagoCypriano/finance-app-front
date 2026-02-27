@@ -1,0 +1,14 @@
+[00:00:01.010] Server  LOG      ✓ Ready in 700ms
+[00:00:05.741] Server  LOG      ○ Compiling / ...
+[00:00:09.025] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:52.317] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:01.082] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
+[00:01:01.085] Server  LOG     [v0] Body: "{\"email\":\"tiago@teste.com\",\"senha\":\"123456\"}"
+[00:01:01.513] Server  LOG     [v0] Backend response status: 200
+[00:01:01.513] Server  LOG     [v0] Backend response body: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiVGlhZ28iLCJ1c2VySWQiOjEsInN1YiI6IjEiLCJpYXQiOjE3NzIyMTQ1MzEsImV4cCI6MTc3MjMwMDkzMX0.qxrfhuk6IddLod6bME_7Y3b66lSwhXdr__8R4fp8KCU\",\"userId\":1,\"nome\":\"Tiago\",\"tipo\":\"Bearer\"}"
+[00:01:22.926] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
+[00:01:22.926] Server  LOG     [v0] Body: "{\"email\":\"tiago@teste.com\",\"senha\":\"123456\"}"
+[00:01:23.342] Server  LOG     [v0] Backend response status: 200
+[00:01:23.342] Server  LOG     [v0] Backend response body: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiVGlhZ28iLCJ1c2VySWQiOjEsInN1YiI6IjEiLCJpYXQiOjE3NzIyMTQ1NTMsImV4cCI6MTc3MjMwMDk1M30.JKLV0CrcC7jtD0C697pUMU8bU4Gik3AHFIagYbqy6yw\",\"userId\":1,\"nome\":\"Tiago\",\"tipo\":\"Bearer\"}"
+[00:01:29.162] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:01:29.162] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
