@@ -2,125 +2,153 @@
 
 import { useState, useEffect } from "react"
 import type { FinancialData, Transaction } from "@/types"
-
-const STORAGE_KEY = "financial_planner_data"
-
-const generateMockData = (): FinancialData => {
-  const today = new Date()
-  return {
-    transactions: [
-      {
-        id: "1",
-        type: "income",
-        amount: 5000,
-        category: "salary",
-        description: "Monthly Salary",
-        date: new Date(today.getFullYear(), today.getMonth(), 1),
-      },
-      {
-        id: "2",
-        type: "expense",
-        amount: 45.5,
-        category: "food",
-        description: "Coffee & Lunch",
-        date: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1),
-      },
-      {
-        id: "3",
-        type: "expense",
-        amount: 120,
-        category: "transport",
-        description: "Gas",
-        date: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2),
-      },
-      {
-        id: "4",
-        type: "expense",
-        amount: 80,
-        category: "entertainment",
-        description: "Movie tickets",
-        date: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3),
-      },
-      {
-        id: "5",
-        type: "expense",
-        amount: 150,
-        category: "utilities",
-        description: "Electricity bill",
-        date: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 5),
-      },
-    ],
-    settings: {
-      currency: "USD",
-      theme: "light",
-    },
-  }
-}
-
-const deserializeData = (data: any): FinancialData => {
-  return {
-    ...data,
-    transactions: data.transactions.map((t: any) => ({
-      ...t,
-      date: typeof t.date === "string" ? new Date(t.date) : t.date,
-    })),
-  }
-}
+import { getToken } from "@/lib/auth"
 
 export function useFinancial() {
-  const [data, setData] = useState<FinancialData | null>(null)
+  const [data, setData] = useState<FinancialData>({
+    transactions: [],
+    settings: { currency: "BRL", theme: "light" }
+  })
   const [loading, setLoading] = useState(true)
 
+  // 1. BUSCAR DADOS
   useEffect(() => {
-    // Simulate async load
-    const timer = setTimeout(() => {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      setData(stored ? deserializeData(JSON.parse(stored)) : generateMockData())
-      setLoading(false)
-    }, 300)
-    return () => clearTimeout(timer)
+    async function fetchFinancialData() {
+      const token = getToken()
+      if (!token) {
+        setLoading(false)
+        return
+      }
+
+      setLoading(true)
+      try {
+        const response = await fetch("/api/transaction", {
+          headers: { "Authorization": `Bearer ${token}` }
+        })
+
+        if (!response.ok) throw new Error("Erro na rede")
+
+        const res = await response.json()
+        
+        const mappedTransactions: Transaction[] = Array.isArray(res) 
+          ? res.map((t: any) => {
+              const rawDate = t.dataHoraTransacao || t.dataTransacao;
+              return {
+                id: (t.idTransacao || t.id || Math.random()).toString(),
+                type: t.tipo === "R" ? "income" : "expense",
+                amount: Number(t.valor) || 0,
+                description: t.descricao || "",
+                category: t.idCategoria ? t.idCategoria.toString() : "",
+                date: rawDate ? new Date(rawDate.split('T')[0] + "T12:00:00") : new Date()
+              }
+            })
+          : []
+
+        setData(prev => ({
+          ...prev,
+          transactions: mappedTransactions
+        }))
+      } catch (error) {
+        console.error("Erro na integração:", error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchFinancialData()
   }, [])
 
-  const saveData = (newData: FinancialData) => {
-    setData(newData)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newData))
-  }
+  // 2. SALVAR TRANSAÇÃO
+  // 2. SALVAR TRANSAÇÃO (Atualizado para aceitar a categoria escolhida)
+  const addTransaction = async (transaction: Omit<Transaction, "id">) => {
+    try {
+      const token = getToken()
+      const payload = {
+        tipo: transaction.type === "income" ? "R" : "D",
+        valor: transaction.amount,
+        descricao: transaction.description,
+        dataTransacao: new Date(transaction.date).toISOString().split('T')[0],
+        idCategoria: Number(transaction.category) 
+      }
 
-  const addTransaction = (transaction: Omit<Transaction, "id">) => {
-    if (!data) return
-    const newTransaction = { ...transaction, id: Date.now().toString() }
-    saveData({ ...data, transactions: [newTransaction, ...data.transactions] })
-  }
+      const response = await fetch("/api/transaction", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      })
 
-  const deleteTransaction = (id: string) => {
-    if (!data) return
-    saveData({ ...data, transactions: data.transactions.filter((t) => t.id !== id) })
-  }
+      if (!response.ok) throw new Error("Erro ao salvar")
+      const newT = await response.json()
 
-  const updateSettings = (settings: Partial<typeof data.settings>) => {
-    if (!data) return
-    saveData({ ...data, settings: { ...data.settings, ...settings } })
-  }
+      const rawDate = newT.dataHoraTransacao || newT.dataTransacao;
 
-  const getMonthlyStats = () => {
-    if (!data) return { income: 0, expenses: 0 }
-    const currentMonth = new Date().toISOString().slice(0, 7)
-    const monthTransactions = data.transactions.filter((t) => {
-      const transactionDate = t.date instanceof Date ? t.date : new Date(t.date)
-      return transactionDate.toISOString().slice(0, 7) === currentMonth
-    })
-    return {
-      income: monthTransactions.filter((t) => t.type === "income").reduce((sum, t) => sum + t.amount, 0),
-      expenses: monthTransactions.filter((t) => t.type === "expense").reduce((sum, t) => sum + t.amount, 0),
+      const mappedNew: Transaction = {
+        id: (newT.idTransacao || newT.id || Date.now()).toString(),
+        type: newT.tipo === "R" ? "income" : "expense",
+        amount: Number(newT.valor) || 0,
+        description: newT.descricao || "",
+        // Mapeia o ID que voltou do Java para o Front-end reconhecer o ícone
+        category: newT.idCategoria ? newT.idCategoria.toString() : transaction.category,
+        date: rawDate ? new Date(rawDate.split('T')[0] + "T12:00:00") : new Date()
+      }
+
+      setData((prev) => ({
+        ...prev,
+        transactions: [mappedNew, ...prev.transactions]
+      }))
+    } catch (error) {
+      alert("Erro ao salvar.");
     }
   }
 
-  return {
-    data,
-    loading,
-    addTransaction,
-    deleteTransaction,
-    updateSettings,
-    getMonthlyStats,
+  // 3. DELETAR TRANSAÇÃO (CORRIGIDO)
+  const deleteTransaction = async (id: string) => {
+    try {
+      const token = getToken()
+      const response = await fetch(`/api/transaction/${id}`, {
+        method: "DELETE",
+        headers: { "Authorization": `Bearer ${token}` }
+      })
+
+      if (response.ok) {
+        setData((prev) => ({
+          ...prev,
+          transactions: prev.transactions.filter((t) => t.id !== id)
+        }))
+      }
+    } catch (error) {
+      console.error("Erro ao deletar:", error)
+    }
+  }
+
+  // 4. ATUALIZAR CONFIGURAÇÕES (RESOLVE O ERRO DO TEMA)
+  const updateSettings = (newSettings: Partial<FinancialData["settings"]>) => {
+    setData((prev) => ({
+      ...prev,
+      settings: { ...prev.settings, ...newSettings }
+    }))
+    
+    // Opcional: Aplicar classe dark ao HTML para o CSS mudar de cor
+    if (newSettings.theme) {
+      document.documentElement.classList.toggle("dark", newSettings.theme === "dark")
+    }
+  }
+
+  const getMonthlyStats = () => {
+    const validTransactions = data.transactions.filter(t => !isNaN(t.date.getTime()));
+    const income = validTransactions.filter((t) => t.type === "income").reduce((sum, t) => sum + t.amount, 0)
+    const expenses = validTransactions.filter((t) => t.type === "expense").reduce((sum, t) => sum + t.amount, 0)
+    return { income, expenses }
+  }
+
+  return { 
+    data, 
+    loading, 
+    addTransaction, 
+    deleteTransaction, 
+    updateSettings, // Adicionado aqui para a página de configurações encontrar
+    getMonthlyStats 
   }
 }

@@ -1,19 +1,107 @@
-[00:00:15.324] Server  LOG      ✓ Ready in 9.7s
-[00:00:32.738] Server  LOG      ○ Compiling / ...
-[00:00:40.851] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:30.386] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
-[00:02:30.390] Server  LOG     [v0] Body: "{\"email\":\"thiago@gmail\",\"senha\":\"thiago\"}"
-[00:02:31.812] Server  LOG     [v0] Backend response status: 400
-[00:02:31.813] Server  LOG     [v0] Backend response body: "{\"status\":400,\"erro\":\"Email ou senha inválidos\",\"timestamp\":\"2026-02-28T23:06:46.677565\"}"
-[00:02:37.568] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
-[00:02:37.569] Server  LOG     [v0] Body: "{\"email\":\"thiago@gmail\",\"senha\":\"123456\"}"
-[00:02:38.083] Server  LOG     [v0] Backend response status: 400
-[00:02:38.084] Server  LOG     [v0] Backend response body: "{\"status\":400,\"erro\":\"Email ou senha inválidos\",\"timestamp\":\"2026-02-28T23:06:53.0125869\"}"
-[00:02:40.598] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
-[00:02:40.598] Server  LOG     [v0] Body: "{\"email\":\"thiago@gmail\",\"senha\":\"thiago27\"}"
-[00:02:41.114] Server  LOG     [v0] Backend response status: 400
-[00:02:41.115] Server  LOG     [v0] Backend response body: "{\"status\":400,\"erro\":\"Email ou senha inválidos\",\"timestamp\":\"2026-02-28T23:06:56.0473318\"}"
-[00:03:20.342] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
-[00:03:20.343] Server  LOG     [v0] Body: "{\"email\":\"thiago@gmail\",\"senha\":\"thiago\"}"
-[00:03:24.462] Server  LOG     [v0] Backend response status: 200
-[00:03:24.463] Server  LOG     [v0] Backend response body: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiVGhpYWdvIE9saXZlaXJhIiwidXNlcklkIjoxLCJzdWIiOiIxIiwiaWF0IjoxNzcyMzMwODU1LCJleHAiOjE3NzI0MTcyNTV9.d7kzzuO5GbqP0cR3OP-mjXFAJvDzUYyNj6jDOVW4-Zc\",\"userId\":1,\"nome\":\"Thiago Oliveira\",\"tipo\":\"Bearer\"}"
+[00:00:00.792] Server  LOG      ✓ Ready in 522ms
+[00:00:03.926] Server  LOG      ○ Compiling / ...
+[00:00:05.724] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:02.062] Server  LOG      ✓ Compiled in 174ms
+[00:03:07.155] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:32.483] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:37.768] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:38.604] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:39.291] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:39.978] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:40.726] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:41.280] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:41.850] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:42.308] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:42.463] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:42.686] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:42.890] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:43.482] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:44.038] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:44.514] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:44.960] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:45.439] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:45.873] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:46.344] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:46.851] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:47.360] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:48.086] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:48.322] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:48.461] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:48.676] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:48.863] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:49.279] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:49.487] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:49.634] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:49.829] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:50.033] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:55.417] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:03:56.947] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:04:01.520] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:04:02.810] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:04:03.280] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:04:03.748] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:04:04.143] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:06:11.821] Server  LOG      ✓ Compiled in 137ms
+[00:06:16.867] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:31.315] Server  LOG     [v0] Proxying login to: "http://localhost:8080/api/auth/login"
+[00:06:31.317] Server  LOG     [v0] Body: "{\"email\":\"tiago@teste.com\",\"senha\":\"123456\"}"
+[00:06:31.723] Server  LOG     [v0] Backend response status: 200
+[00:06:31.724] Server  LOG     [v0] Backend response body: "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiVGlhZ28iLCJ1c2VySWQiOjEsInN1YiI6IjEiLCJpYXQiOjE3NzI0ODAwODUsImV4cCI6MTc3MjU2NjQ4NX0.zpxWaZ-q44NOg0zVDXTUzJEJ6CbgNhZ9vcw3PEHsDrA\",\"userId\":1,\"nome\":\"Tiago\",\"tipo\":\"Bearer\"}"
+[00:06:41.073] Browser ERROR   uncaughtError: TypeError: deleteTransaction is not a function
+[00:06:42.184] Browser ERROR   uncaughtError: TypeError: deleteTransaction is not a function
+[00:06:44.750] Browser ERROR   uncaughtError: TypeError: deleteTransaction is not a function
+[00:06:45.868] Browser ERROR   uncaughtError: TypeError: deleteTransaction is not a function
+[00:06:46.728] Browser ERROR   uncaughtError: TypeError: deleteTransaction is not a function
+[00:08:40.697] Server  LOG      ✓ Compiled in 79ms
+[00:08:49.983] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:19.547] Browser ERROR   uncaughtError: TypeError: updateSettings is not a function
+[00:11:27.074] Server  LOG      ✓ Compiled in 58ms
+[00:11:33.130] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:45.575] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:11:45.575] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:13:19.674] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:13:19.674] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:13:33.976] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:13:33.976] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:27:06.084] Server  LOG      ✓ Compiled in 113ms
+[00:27:09.478] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:58.605] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:27:58.605] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:39:53.429] Server  LOG      ✓ Compiled in 60ms
+[00:41:01.628] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:00.603] Server  LOG      ✓ Compiled in 53ms
+[00:44:22.876] Server  LOG      ✓ Compiled in 75ms
+[00:45:53.798] Server  LOG      ✓ Compiled in 51ms
+[00:46:01.855] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:57:10.423] Server  LOG      ✓ Compiled in 46ms
+[00:58:32.712] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:58:54.228] Server  LOG      ✓ Compiled in 50ms
+[00:58:56.289] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:09.599] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:59:09.599] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:05:08.007] Server  LOG      ✓ Compiled in 60ms
+[01:05:18.440] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:06:45.132] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:06:45.132] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:06:49.643] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:06:49.643] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:07:19.527] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:07:19.527] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:07:31.274] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:07:31.275] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:08:15.062] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:08:15.062] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:09:59.206] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:09:59.206] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:18:34.074] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:18:34.074] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:22:01.174] Server  LOG      ✓ Compiled in 55ms
+[01:23:29.129] Server  LOG      ✓ Compiled in 54ms
+[01:27:40.301] Server  LOG      ✓ Compiled in 64ms
+[01:27:48.130] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:27:50.107] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:27:50.107] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:28:55.728] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:28:55.728] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:29:19.441] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[01:29:19.441] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
